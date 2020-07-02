@@ -1,24 +1,20 @@
-# README
+# Ejercicio Práctico Kinedu
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+- Ruby version
+  > ruby 2.7.0p0
+- System dependencies
+  > Rspec
+  > Factory Bot
+  > Shoulda Matchers
+  > Faker
+  > Database Cleaner
+  > Mysql2
+- Configuration
 
-Things you may want to cover:
+- Database creation
 
-* Ruby version
+- Database initialization
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- How to run the test suite
+  > bundle exe rspec
+- Deployment instructions
