@@ -12,9 +12,9 @@ Shoulda::Matchers.configure do |config|
     with.test_framework :rspec
     with.library :rails
 
-    whit.library :active_record
-    whit.library :active_model
-    whit.library :active_controller
+    with.library :active_record
+    with.library :active_model
+    with.library :action_controller
   end
 end
 
