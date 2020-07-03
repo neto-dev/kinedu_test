@@ -7,8 +7,7 @@ RSpec.describe ActivityLog, type: :model do
       should validate_presence_of(:assistant_id)
       should validate_presence_of(:activity_id)
       should validate_presence_of(:start_time)
-      should validate_presence_of(:stop_time)
-      should validate_presence_of(:duration)
+      should validate_presence_of(:stop_time).on(:update)
     end
   end
 end

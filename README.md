@@ -9,6 +9,7 @@
   > Faker
   > Database Cleaner
   > Mysql2
+  > Active Model Serializers
 - Configuration
   - 1.- Create a file .env in the project path with the next structure
     ```v
