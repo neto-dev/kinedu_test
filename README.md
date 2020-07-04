@@ -29,3 +29,4 @@
 - How to run the test suite
   > bundle exe rspec
 - Deployment instructions
+  > In the project path I'm including an insomnia configuration file, in this file are found all routes from the API, they just need to import the file in the insomnia software. File name: insomnia_request_configuration.json
