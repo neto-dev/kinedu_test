@@ -1,0 +1,50 @@
+<h1 class="py-5">Log de Actividades</h1>
+<div class="">
+  <%= form_with(url: "/activity_logs", method: "get", html: { class: "row py-4" }) do %>
+    <div class="col">
+      <%= select_tag(:baby, options_for_select([["Seleccionar Bebé", ""]]) + options_from_collection_for_select(Baby.all, :id, :name, params[:baby].to_i), class: "custom-select") %>
+    </div>
+    <div class="col">
+      <%= select_tag(:assistant, options_for_select([["Seleccionar Asistente", ""]]) + options_from_collection_for_select(Assistant.all, :id, :name, params[:assistant].to_i), class: "custom-select") %>
+    </div>
+    <div class="col">
+      <%= select_tag(:status, options_for_select([["Todos", 0], ["Terminado", 1], ["En Progreso", 2]], params[:status].to_i), class: "custom-select") %>
+    </div>
+    <div class="col">
+      <%= submit_tag "Filtrar", class: "btn btn-primary" %>
+    </div>
+  <% end %>
+ 
+</div>
+<div class="table-responsive">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Bebé</th>
+        <th scope="col">Asistente</th>
+        <th scope="col">Actividad</th>
+        <th scope="col">Inicio</th>
+        <th scope="col">Estatus</th>
+        <th scope="col">Duración</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% if @activity_logs.length == 0 %>
+        <tr>
+          <td colspan="6">No se encontraron registros...</td>
+        </tr>
+      <% else %>
+        <% @activity_logs.each do |item| %>
+          <tr>
+            <td><%= item.baby.name %></td>
+            <td><%= item.assistant.name %></td>
+            <td><%= item.activity.name %></td>
+            <td><%= item.start_time.strftime('%Y-%m-%d %H:%M') %></td>
+            <td><%= item.duration.blank? ? "En progreso" : "Terminada" %></td>
+            <td><%= item.duration.blank? ? "*" : "#{item.duration} min"  %></td>
+          </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+</div>

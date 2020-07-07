@@ -45,6 +45,7 @@ group :test do
   gem 'shoulda-matchers', '~> 4.0'
   gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
   gem 'database_cleaner-active_record'
+  gem 'rails-controller-testing'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

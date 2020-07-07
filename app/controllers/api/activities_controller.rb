@@ -1,4 +1,4 @@
-class Api::ActivitiesController < ApplicationController
+class Api::ActivitiesController < ApiController
   # GET /api/activities
   def index
     @activities = Activity.all

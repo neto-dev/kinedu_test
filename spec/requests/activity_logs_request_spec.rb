@@ -110,4 +110,68 @@ RSpec.describe "Activities Logs endpoint", type: :request do
 
     
   end
+
+  describe "GET index Activity Logs" do
+    let!(:activity_log) { create(:activity_log) }
+    it "should assigns @activity_logs" do
+      get "/activity_logs"
+      expect(response).to be_successful
+      expect(response.content_type).to eq("text/html; charset=utf-8")
+      expect(assigns(:activity_logs)).to eq([activity_log])
+    end
+    it "should renders the index template" do
+      get "/activity_logs"
+      expect(response).to render_template("index")
+    end
+
+    it "should return successful response with param status 0 and should return activities is equal to one register" do
+      get "/activity_logs", params: { status: 0 }
+      expect(response).to be_successful
+      expect(response.content_type).to eq("text/html; charset=utf-8")
+      expect(assigns(:activity_logs).length).to eq(1) 
+    end
+
+    it "should return successful response with param status 1 and should return activities is equal to zero register" do
+      get "/activity_logs", params: { status: 1 }
+      expect(response).to be_successful
+      expect(response.content_type).to eq("text/html; charset=utf-8")
+      expect(assigns(:activity_logs).length).to eq(0) 
+    end
+
+    it "should return successful response with param status 2 and should return activities is equal to one register" do
+      get "/activity_logs", params: { status: 2 }
+      expect(response).to be_successful
+      expect(response.content_type).to eq("text/html; charset=utf-8")
+      expect(assigns(:activity_logs).length).to eq(1) 
+    end
+
+    it "should return successful response with param baby and should return one activity " do
+      get "/activity_logs", params: { baby: activity_log.baby_id }
+      expect(response).to be_successful
+      expect(response.content_type).to eq("text/html; charset=utf-8")
+      expect(assigns(:activity_logs).length).to eq(1) 
+    end
+
+    it "should return successful response with param assistant and should return one activity " do
+      get "/activity_logs", params: { assistant: activity_log.assistant_id }
+      expect(response).to be_successful
+      expect(response.content_type).to eq("text/html; charset=utf-8")
+      expect(assigns(:activity_logs).length).to eq(1) 
+    end
+
+    it "should return successful response with params baby and assistant and should return one activity " do
+      get "/activity_logs", params: { baby: activity_log.assistant_id, assistant: activity_log.assistant_id }
+      expect(response).to be_successful
+      expect(response.content_type).to eq("text/html; charset=utf-8")
+      expect(assigns(:activity_logs).length).to eq(1) 
+    end
+
+    it "should return successful response with params baby, assistant and status and should return zero activities " do
+      get "/activity_logs", params: { baby: activity_log.assistant_id, assistant: activity_log.assistant_id, status: 1 }
+      expect(response).to be_successful
+      expect(response.content_type).to eq("text/html; charset=utf-8")
+      expect(assigns(:activity_logs).length).to eq(0) 
+    end
+
+  end
 end

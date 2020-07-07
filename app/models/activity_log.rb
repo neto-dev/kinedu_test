@@ -1,4 +1,6 @@
 class ActivityLog < ApplicationRecord
+  include Filterable
+
   belongs_to :activity
   belongs_to :assistant
   belongs_to :baby

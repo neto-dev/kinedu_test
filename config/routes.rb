@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :activity_logs, only: [:index]
   concern :api_base do
     resources :activities, only: [:index]
     resources :babies, only: [:index] do
@@ -12,5 +13,6 @@ Rails.application.routes.draw do
   namespace :api do
     concerns :api_base
   end
+
 
 end

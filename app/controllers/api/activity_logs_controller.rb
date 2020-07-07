@@ -1,4 +1,4 @@
-class Api::ActivityLogsController < ApplicationController
+class Api::ActivityLogsController < ApiController
 
   rescue_from Exception do |e|
     render json: { error: e.message }, status: :internal_error
